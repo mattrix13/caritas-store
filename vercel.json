@@ -1,0 +1,14 @@
+# Создайте vercel.json
+@'
+{
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "framework": "vite"
+}
+'@ | Out-File -FilePath "vercel.json" -Encoding UTF8

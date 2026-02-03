@@ -2,7 +2,7 @@
   "name": "caritas-store",
   "version": "1.0.0",
   "type": "module",
-  "homepage": "https://mattrix13.github.io/caritas-store",
+
   "scripts": {
     "dev": "vite",
     "build": "vite build",
