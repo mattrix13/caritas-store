@@ -1,5 +1,3 @@
-# Создайте vercel.json
-@'
 {
   "rewrites": [
     {
@@ -11,4 +9,3 @@
   "outputDirectory": "dist",
   "framework": "vite"
 }
-'@ | Out-File -FilePath "vercel.json" -Encoding UTF8
