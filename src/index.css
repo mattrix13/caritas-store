@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Кастомные анимации */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes slide-in-right {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slide-in-left {
+  from { transform: translateX(-100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fade-in-up {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@layer base {
+  body {
+    @apply bg-gray-900 text-gray-100 font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    background: linear-gradient(135deg, theme('colors.crimson.600'), theme('colors.crimson.700'));
+    @apply text-white px-4 sm:px-6 py-3 rounded-lg font-semibold 
+           transition-all duration-300 hover:shadow-lg active:scale-95
+           text-sm sm:text-base;
+  }
+  
+  .btn-primary:hover {
+    background: linear-gradient(135deg, theme('colors.crimson.700'), theme('colors.crimson.800'));
+  }
+  
+  .btn-secondary {
+    @apply border-2 border-gray-600 text-gray-300 px-4 sm:px-6 py-3 rounded-lg font-semibold 
+           transition-all duration-300 hover:border-crimson-500 hover:text-crimson-400 
+           active:scale-95 text-sm sm:text-base;
+  }
+  
+  .card-hover {
+    @apply transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-black/50;
+  }
+  
+  .text-gradient {
+    background: linear-gradient(90deg, theme('colors.crimson.400'), theme('colors.crimson.600'));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .glass-effect {
+    @apply bg-gray-800/50 backdrop-blur-md border border-gray-700/50;
+  }
+  
+  /* Мобильные настройки */
+  .mobile-container {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+  
+  .mobile-text {
+    @apply text-sm sm:text-base;
+  }
+  
+  .mobile-heading {
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl;
+  }
+  
+  .mobile-subheading {
+    @apply text-lg sm:text-xl md:text-2xl;
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.5s ease-out;
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.5s ease-out;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.5s ease-out;
+}
+
+/* Кастомный скроллбар */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: theme('colors.gray.800');
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, theme('colors.crimson.600'), theme('colors.crimson.700'));
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, theme('colors.crimson.700'), theme('colors.crimson.800'));
+}
+
+/* Улучшения для touch устройств */
+@media (max-width: 640px) {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  button, a {
+    @apply min-h-[44px] min-w-[44px]; /* Минимальный размер для touch */
+  }
+  
+  input, textarea, select {
+    @apply text-base; /* Увеличиваем размер текста для мобильных */
+  }
+}
+
+/* Адаптивные отступы */
+.container {
+  @apply px-4 sm:px-6 lg:px-8 mx-auto;
+}
+
+/* Улучшения для маленьких экранов */
+@media (max-width: 375px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+/* Для планшетов */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .tablet-grid {
+    @apply grid-cols-2;
+  }
+}
